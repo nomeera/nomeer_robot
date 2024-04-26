@@ -1,0 +1,15 @@
+GlobalPlanner:                  
+  allow_unknown: true  # Specifies whether or not to allow the planner to create plans that traverse unknown space.
+  track_unknown_space: true  #  it will convert all your unknown space to free space (which planner will then happily go right through).
+  use_dijkstra: true  # If true, use dijkstra's algorithm. Otherwise, A*.                  
+  use_quadratic: true  # If true, use the quadratic approximation of the potential. Otherwise, use a simpler calculation.
+  use_grid_path: false # If true, create a path that follows the grid boundaries. Otherwise, use a gradient descent method.
+  old_navfn_behavior: false  # If for some reason, you want global_planner to exactly mirror the behavior of navfn, set this to true (and use the defaults for the other boolean parameters)
+  lethal_cost: 253  # Lethal Cost (dynamic reconfigure)
+  neutral_cost: 40  # Neutral Cost (dynamic reconfigure)
+  cost_factor: 0.55  # Factor to multiply each cost from costmap by (dynamic reconfigure)
+  visualize_potential: true # Specifies whether or not to visualize the potential area computed via a PointCloud2.
+  publish_potential: true # Publish Potential Costmap (dynamic reconfigure)
+  orientation_mode: 2 # How to set the orientation of each point (None=0, Forward=1, Interpolate=2, ForwardThenInterpolate=3, Backward=4, Leftward=5, Rightward=6) (dynamic reconfigure)                                                  
+  orientation_window_size: 1 # What window to use to determine the orientation based on the position derivative specified by the orientation mode (dynamic reconfigure)                     
+  outline_map: true # Outlines the global costmap with lethal obstacles. For the usage of a non static (rolling window) global costmap this needs to be set to false.                                            

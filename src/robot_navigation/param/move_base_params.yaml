@@ -1,0 +1,18 @@
+base_local_planner: "dwa_local_planner/DWAPlannerROS"
+base_global_planner: "global_planner/GlobalPlanner" 
+controller_frequency: 10.0 # The rate in Hz at which to run the control loop and send velocity commands to the base.
+planner_patience: 5.0 # How long the planner will wait in seconds in an attempt to find a valid plan before space-clearing operations are performed.
+controller_patience: 15.0 # How long the controller will wait in seconds without receiving a valid control before space-clearing operations are performed.
+conservative_reset_dist: 3.0  # The distance away from the robot in meters beyond which obstacles will be cleared from the costmap when attempting to clear space in the map.
+recovery_behavior_enabled: true # Whether or not to enable the move_base recovery behaviors to attempt to clear out space.
+clearing_rotation_allowed: true # Determines whether or not the robot will attempt an in-place rotation when attempting to clear out space. 
+shutdown_costmaps: false # Determines whether or not to shutdown the costmaps of the node when move_base is in an inactive state
+oscillation_timeout: 10.0 # How far in meters the robot must move to be considered not to be oscillating. 
+oscillation_distance: 1.0 # How far in meters the robot must move to be considered not to be oscillating.
+planner_frequency: 0.0 # The rate in Hz at which to run the global planning loop. If the frequency is set to 0.0, the global planner will only run when a new goal is received or the local planner reports that its path is blocked. 
+max_planning_retries: -1.0 # How many times to allow for planning retries before executing recovery behaviors. A value of -1.0 corresponds to an infinite retries
+
+
+
+
+ 

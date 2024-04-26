@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>    
+
+    <!-- nomeer_robot -->
+    <include file="$(find robot_gazebo)/launch/nomeer_robot.launch"/>
+    
+    <!-- AMCL -->
+    <include file="$(find robot_navigation)/launch/amcl.launch" />
+
+    <!-- move_base -->
+    <include file="$(find robot_navigation)/launch/move_base.launch" />
+
+</launch>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- gazebo arguments -->
+    <arg name="world" default="empty" />
+    <arg name="paused" default="false" />
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="headless" default="false" />
+    <arg name="debug" default="false" />
+    <arg name="world_file" default="$(find robot_gazebo)/worlds/hospital.world" />
+
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="world_name" value="$(arg world_file)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="use_sim_time" value="$(arg use_sim_time)" />
+        <arg name="headless" value="$(arg headless)" />
+        <arg name="verbose" value="false" />
+    </include>
+
+    <!-- Convert an xacro and put on parameter server -->
+    <param command="$(find xacro)/xacro $(find robot_description)/urdf/robot.xacro"
+        name="robot_description" />
+
+    <!-- Spawn a robot into Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-param robot_description -urdf -y 1 -model nomeer_robot" />
+
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- send robot states to tf -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        output="screen" respawn="false" />
+
+    <!-- run rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_navigation)/rviz/nomeer.rviz" />
+</launch>

@@ -1,0 +1,15 @@
+global_costmap:
+  # Coordinate frame and tf parameters
+  global_frame: map # The global frame for the costmap to operate in.
+  robot_base_frame: base_link # The name of the frame for the base link of the robot.
+  transform_tolerance: 0.5 # Specifies the delay in transform (tf) data that is tolerable in seconds.
+  # Rate parameters   
+  update_frequency: 1.0 # The frequency in Hz for the map to be updated.
+  publish_frequency: 0.5  # The frequency in Hz for the map to be publish display information.  
+  # Plugins
+  plugins: 
+    - {name: static_layer,            type: "costmap_2d::StaticLayer"} # Static Map Layer  
+    - {name: laser_layer,             type: "costmap_2d::ObstacleLayer"} # Obstacle Map Layer
+    - {name: inflation_layer,         type: "costmap_2d::InflationLayer"} # Inflation Layer
+
+ 

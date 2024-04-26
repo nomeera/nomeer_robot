@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nomeer_robot">
+
+    <xacro:include filename="material.xacro" ns="material" />
+    <xacro:include filename="inertial_macros.xacro" ns="inertial" />
+
+    <!-- lidar_link -->
+    <link name="lidar_link">
+        <visual name="lidar_link">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.05" />
+            </geometry>
+            <xacro:material.orange />
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.05" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Gazebo Material -->
+    <gazebo reference="lidar_link">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+</robot>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nomeer_robot">
+
+    <xacro:include filename="material.xacro" ns="material" />
+    <xacro:include filename="inertial_macros.xacro" ns="inertial" />
+
+    <xacro:macro name="wheel_link" params="position">
+
+        <!-- ${position}_wheel_link -->
+        <link name="${position}_wheel_link">
+            <visual name="${position}_wheel_link">
+                <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0" />
+                <geometry>
+                    <cylinder radius="0.1" length="0.08" />
+                </geometry>
+                <xacro:material.blue />
+            </visual>
+
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0" />
+                <geometry>
+                    <cylinder radius="0.1" length="0.08" />
+                </geometry>
+            </collision>
+
+            <xacro:inertial.inertial_cylinder mass="0.6" length="0.08" radius="0.1">
+                <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0" />
+            </xacro:inertial.inertial_cylinder>
+        </link>
+
+        <!-- Gazebo Material -->
+        <gazebo reference="${position}_wheel_link">
+            <mu1 value="200.0" />
+            <mu2 value="100.0" />
+            <material>Gazebo/Blue</material>
+        </gazebo>
+
+        <!-- wheel transmission -->
+        <transmission name="${position}_wheel_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${position}_wheel_link">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${position}_wheel_actuator">
+                <mechanicalReduction>1.0</mechanicalReduction>
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+
+    </xacro:macro>
+</robot>

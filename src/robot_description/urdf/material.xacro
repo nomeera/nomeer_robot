@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nomeer_robot">
+
+
+    <xacro:macro name="white">
+        <material name="white">
+            <color rgba="1 1 1 1" />
+        </material>
+    </xacro:macro>
+
+    <xacro:macro name="orange">
+        <material name="orange">
+            <color rgba="1 0.3 0.1 1" />
+        </material>
+    </xacro:macro>
+
+    <xacro:macro name="blue">
+        <material name="blue">
+            <color rgba="0.2 0.2 1 1" />
+        </material>
+    </xacro:macro>
+
+    <xacro:macro name="green">
+        <material name="green">
+            <color rgba="0.0 1.0 0.0 1.0" />
+        </material>
+    </xacro:macro>
+
+    <xacro:macro name="black">
+        <material name="black">
+            <color rgba="0 0 0 1" />
+        </material>
+    </xacro:macro>
+
+
+</robot>

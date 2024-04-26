@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nomeer_robot">
+
+    <xacro:include filename="material.xacro" ns="material" />
+    <xacro:include filename="inertial_macros.xacro" ns="inertial" />
+ 
+    <!-- base_link -->
+    <link name="base_link">
+        <visual name="base_link">
+            <origin xyz="0.0 0.0 0.35" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.8 0.6 0.5" />
+            </geometry>
+            <xacro:material.white />
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.35" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.8 0.6 0.5" />
+            </geometry>
+        </collision>
+
+        <xacro:inertial.inertial_box mass="10" x="0.8" y="0.6" z="0.5">
+            <origin xyz="0.0 0.0 0.35" rpy="0.0 0.0 0.0" />
+        </xacro:inertial.inertial_box>
+    </link>
+
+    <!-- Gazebo Material -->
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+</robot>
