@@ -2,7 +2,8 @@
 
 This project focuses on the development of an Autonomous Mobile Robot using ROS (noetic), running on Ubuntu 20.04. The robot is designed to navigate within a simulated hospital environment. The project is divided into three main packages: `robot_description`, `robot_gazebo`, and `robot_navigation`.
 
-[<img src="https://img.youtube.com/vi/N2RLQ2x2MWw/0.jpg">]([https://www.youtube.com/watch?v=Hc79sDi3f0U](https://www.youtube.com/watch?v=N2RLQ2x2MWw) "Now in Android: 55")
+[![](https://img.youtube.com/vi/N2RLQ2x2MWw/0.jpg)](https://www.youtube.com/watch?v=N2RLQ2x2MWw)
+
 
 ## Packages Overview
 
